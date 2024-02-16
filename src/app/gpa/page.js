@@ -221,7 +221,7 @@ export default function Home() {
               </span>{" "}
               GPA Calculator
             </h1>
-            <p className="-mt-4 text-lg leading-8 text-gray-600">
+            <p className="sm:-mt-4 text-lg leading-8 text-gray-600">
               Signed in as {session?.user?.email} |{" "}
               <span>
                 <button
@@ -566,7 +566,7 @@ export default function Home() {
                     </tbody>
                   </table>
                 </div>
-                <div className="relative overflow-x-auto">
+                <div className="relative overflow-x-auto ">
                   <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
                     Junior Year
                   </div>
