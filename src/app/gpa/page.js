@@ -406,325 +406,306 @@ export default function Home() {
               <div className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Courses:
               </div>
-
-              <div className="flex flex-row justify-center items-center mt-12  flex-wrap gap-16">
-                <div className="relative overflow-x-auto">
-                  <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
-                    Freshman Year
-                  </div>
-                  <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                    <thead className="text-xs uppercase bg-gray-50 text-gray-500">
-                      <tr>
-                        <th scope="col" className="px-6 py-3">
-                          Course Name
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Grade
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Credits
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Type
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Remove
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {freshman.map((course) => (
-                        <tr
-                          className="bg-green-500/10 border-b "
-                          key={course.idx}
-                        >
-                          <th
-                            scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                          >
-                            {course.courseName}
-                          </th>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.grade}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.credits}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.type}
-                          </td>
-                          <td
-                            className="px-6 py-4 text-center"
-                            onClick={(e) =>
-                              removeID(
-                                "freshman",
-                                course.idx,
-                                course.credits,
-                                course.grade,
-                                course.type
-                              )
-                            }
-                          >
-                            <button className="text-gray-600 hover:text-gray-900">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                />
-                              </svg>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="relative overflow-x-auto">
-                  <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
-                    Sophmore Year
-                  </div>
-                  <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                    <thead className="text-xs uppercase bg-gray-50 text-gray-500">
-                      <tr>
-                        <th scope="col" className="px-6 py-3">
-                          Course Name
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Grade
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Credits
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Type
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Remove
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {sophmore.map((course) => (
-                        <tr
-                          className="bg-green-500/10 border-b "
-                          key={course.idx}
-                        >
-                          <th
-                            scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                          >
-                            {course.courseName}
-                          </th>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.grade}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.credits}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.type}
-                          </td>
-                          <td
-                            className="px-6 py-4 text-center"
-                            onClick={(e) =>
-                              removeID(
-                                "sophmore",
-                                course.idx,
-                                course.credits,
-                                course.grade,
-                                course.type
-                              )
-                            }
-                          >
-                            <button className="text-gray-600 hover:text-gray-900">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                />
-                              </svg>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="relative overflow-x-auto ">
-                  <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
-                    Junior Year
-                  </div>
-                  <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                    <thead className="text-xs uppercase bg-gray-50 text-gray-500">
-                      <tr>
-                        <th scope="col" className="px-6 py-3">
-                          Course Name
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Grade
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Credits
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Type
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Remove
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {junior.map((course) => (
-                        <tr
-                          className="bg-green-500/10 border-b "
-                          key={course.idx}
-                        >
-                          <th
-                            scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                          >
-                            {course.courseName}
-                          </th>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.grade}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.credits}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.type}
-                          </td>
-                          <td
-                            className="px-6 py-4 text-center"
-                            onClick={(e) =>
-                              removeID(
-                                "junior",
-                                course.idx,
-                                course.credits,
-                                course.grade,
-                                course.type
-                              )
-                            }
-                          >
-                            <button className="text-gray-600 hover:text-gray-900">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                />
-                              </svg>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="relative overflow-x-auto">
-                  <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
-                    Senior Year
-                  </div>
-                  <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                    <thead className="text-xs uppercase bg-gray-50 text-gray-500">
-                      <tr>
-                        <th scope="col" className="px-6 py-3">
-                          Course Name
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Grade
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Credits
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Type
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Remove
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {senior.map((course) => (
-                        <tr
-                          className="bg-green-500/10 border-b "
-                          key={course.idx}
-                        >
-                          <th
-                            scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                          >
-                            {course.courseName}
-                          </th>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.grade}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.credits}
-                          </td>
-                          <td className="px-6 py-4 text-gray-900">
-                            {course.type}
-                          </td>
-                          <td
-                            className="px-6 py-4 text-center"
-                            onClick={(e) =>
-                              removeID(
-                                "senior",
-                                course.idx,
-                                course.credits,
-                                course.grade,
-                                course.type
-                              )
-                            }
-                          >
-                            <button className="text-gray-600 hover:text-gray-900">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                />
-                              </svg>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+            </div>
+          </div>
+          <div className="flex flex-row justify-center items-center mt-12  flex-wrap gap-16">
+            <div className="relative overflow-x-auto">
+              <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
+                Freshman Year
               </div>
+              <div></div>
+              <table className="flex table-fixed  w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <thead className="text-xs uppercase bg-gray-50 text-gray-500">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Course Name
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Grade
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Credits
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Type
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Remove
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {freshman.map((course) => (
+                    <tr className="bg-green-500/10 border-b " key={course.idx}>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      >
+                        {course.courseName}
+                      </th>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.grade}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.credits}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">{course.type}</td>
+                      <td
+                        className="px-6 py-4 text-center"
+                        onClick={(e) =>
+                          removeID(
+                            "freshman",
+                            course.idx,
+                            course.credits,
+                            course.grade,
+                            course.type
+                          )
+                        }
+                      >
+                        <button className="text-gray-600 hover:text-gray-900">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="relative overflow-x-auto">
+              <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
+                Sophmore Year
+              </div>
+              <table className="overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <thead className="text-xs uppercase bg-gray-50 text-gray-500">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Course Name
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Grade
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Credits
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Type
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Remove
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sophmore.map((course) => (
+                    <tr className="bg-green-500/10 border-b " key={course.idx}>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      >
+                        {course.courseName}
+                      </th>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.grade}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.credits}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">{course.type}</td>
+                      <td
+                        className="px-6 py-4 text-center"
+                        onClick={(e) =>
+                          removeID(
+                            "sophmore",
+                            course.idx,
+                            course.credits,
+                            course.grade,
+                            course.type
+                          )
+                        }
+                      >
+                        <button className="text-gray-600 hover:text-gray-900">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="relative overflow-x-auto ">
+              <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
+                Junior Year
+              </div>
+              <table className="whitespace-nowrap w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <thead className="text-xs uppercase bg-gray-50 text-gray-500">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Course Name
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Grade
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Credits
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Type
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Remove
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {junior.map((course) => (
+                    <tr className="bg-green-500/10 border-b " key={course.idx}>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      >
+                        {course.courseName}
+                      </th>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.grade}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.credits}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">{course.type}</td>
+                      <td
+                        className="px-6 py-4 text-center"
+                        onClick={(e) =>
+                          removeID(
+                            "junior",
+                            course.idx,
+                            course.credits,
+                            course.grade,
+                            course.type
+                          )
+                        }
+                      >
+                        <button className="text-gray-600 hover:text-gray-900">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="relative overflow-x-auto">
+              <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
+                Senior Year
+              </div>
+              <table className="overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <thead className="text-xs uppercase bg-gray-50 text-gray-500">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Course Name
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Grade
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Credits
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Type
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Remove
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {senior.map((course) => (
+                    <tr className="bg-green-500/10 border-b " key={course.idx}>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      >
+                        {course.courseName}
+                      </th>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.grade}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">
+                        {course.credits}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900">{course.type}</td>
+                      <td
+                        className="px-6 py-4 text-center"
+                        onClick={(e) =>
+                          removeID(
+                            "senior",
+                            course.idx,
+                            course.credits,
+                            course.grade,
+                            course.type
+                          )
+                        }
+                      >
+                        <button className="text-gray-600 hover:text-gray-900">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
             <div className="flex flex-row justify-center items-center mt-12  flex-wrap gap-16">
