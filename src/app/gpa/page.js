@@ -752,13 +752,14 @@ export default function Home() {
 
             <div className="mt-16 max-w-4xl mx-auto p-4 bg-gray-100 text-gray-700 rounded-lg shadow-md">
               <h2 className="text-xl sm:text-2xl font-semibold mb-2 cursor-pointer">
-                What's This?
+                What&apos;s This?
               </h2>
               <div className="text-sm sm:text-md text-center">
                 <div className="text-left">
                   <p className="mb-2">
                     Our GPA calculator helps you estimate your Grade Point
-                    Average based on your current grades. Here's how it works:
+                    Average based on your current grades. Here&apos;s how it
+                    works:
                   </p>
                   <ol className="list-decimal pl-4 mb-4">
                     <li>
@@ -826,8 +827,8 @@ export default function Home() {
                     Q: How can I get my GPA up?
                   </p>
                   <p className="mb-2">
-                    A: Try to do well in your classes! If you're struggling,
-                    talk to your teacher or{" "}
+                    A: Try to do well in your classes! If you&apos;re
+                    struggling, talk to your teacher or{" "}
                     <a
                       href="https://docs.google.com/forms/d/e/1FAIpQLSeUvj1Bj4x4Sg-QEdEpxMgfR7ER5zIKqI3qWipH8hLzbhVmdA/viewform"
                       target="_blank"
@@ -872,8 +873,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* create a "what's this?" section that shows how gpa is calculated*/}
           </div>
         </div>
       </div>
