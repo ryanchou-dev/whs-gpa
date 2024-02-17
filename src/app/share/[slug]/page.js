@@ -366,7 +366,6 @@ export default function Home({ params }) {
               <br />
               <span className="text-center font-bold bg-gradient-radial from-[#4ea877] to-[#224e36]  text-transparent bg-clip-text">
                 {totCredits > 0 ? (uTotGrade / totCredits).toFixed(2) : "N/A"}
-                {uTotGrade}
               </span>{" "}
             </div>
           </div>
