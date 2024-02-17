@@ -414,7 +414,7 @@ export default function Home() {
                 Freshman Year
               </div>
               <div></div>
-              <table className="flex table-fixed  w-full text-sm text-left rtl:text-right text-gray-500 ">
+              <table className="text-sm text-left rtl:text-right text-gray-500 ">
                 <thead className="text-xs uppercase bg-gray-50 text-gray-500">
                   <tr>
                     <th scope="col" className="px-6 py-3">
@@ -488,7 +488,7 @@ export default function Home() {
               <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
                 Sophmore Year
               </div>
-              <table className="overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 ">
+              <table className=" text-sm text-left rtl:text-right text-gray-500 ">
                 <thead className="text-xs uppercase bg-gray-50 text-gray-500">
                   <tr>
                     <th scope="col" className="px-6 py-3">
@@ -563,7 +563,7 @@ export default function Home() {
               <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
                 Junior Year
               </div>
-              <table className="whitespace-nowrap w-full text-sm text-left rtl:text-right text-gray-500 ">
+              <table className="text-sm text-left rtl:text-right text-gray-500 ">
                 <thead className="text-xs uppercase bg-gray-50 text-gray-500">
                   <tr>
                     <th scope="col" className="px-6 py-3">
@@ -637,7 +637,7 @@ export default function Home() {
               <div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
                 Senior Year
               </div>
-              <table className="overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 ">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                 <thead className="text-xs uppercase bg-gray-50 text-gray-500">
                   <tr>
                     <th scope="col" className="px-6 py-3">
