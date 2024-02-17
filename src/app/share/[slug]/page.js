@@ -24,7 +24,7 @@ export default function Home({ params }) {
         },
       });
       const data = await res.json();
-      setEmail(res.statusText);
+      setEmail(data.statusText);
 
       data.classes.forEach((course) => {
         setTotCredits((totCredits) => totCredits + Number(course.credits));
