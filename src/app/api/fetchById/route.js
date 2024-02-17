@@ -17,11 +17,6 @@ export async function POST(req) {
       },
     });
 
-    return NextResponse.json(
-      { classes },
-      {
-        statusText: user.email,
-      }
-    );
+    return NextResponse.json({ classes, userEmail: user.email });
   }
 }
