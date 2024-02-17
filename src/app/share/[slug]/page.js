@@ -42,7 +42,7 @@ export default function Home({ params }) {
               totGrade +
               (3 + (course.courseType == "AP")) * Number(course.credits)
           );
-          setUTotGrade((uTotGrade) => uTotGrade + 4 * Number(course.credits));
+          setUTotGrade((uTotGrade) => uTotGrade + 3 * Number(course.credits));
         }
         if (course.grade == "C") {
           setTotGrade(
@@ -50,7 +50,7 @@ export default function Home({ params }) {
               totGrade +
               (2 + (course.courseType == "AP")) * Number(course.credits)
           );
-          setUTotGrade((uTotGrade) => uTotGrade + 4 * Number(course.credits));
+          setUTotGrade((uTotGrade) => uTotGrade + 2 * Number(course.credits));
         }
         if (course.grade == "D") {
           setTotGrade(
@@ -58,7 +58,7 @@ export default function Home({ params }) {
               totGrade +
               (1 + (course.courseType == "AP")) * Number(course.credits)
           );
-          setUTotGrade((uTotGrade) => uTotGrade + 4 * Number(course.credits));
+          setUTotGrade((uTotGrade) => uTotGrade + Number(course.credits));
         }
         if (course.year == "Freshman") {
           setFreshman((freshman) => [
@@ -366,6 +366,7 @@ export default function Home({ params }) {
               <br />
               <span className="text-center font-bold bg-gradient-radial from-[#4ea877] to-[#224e36]  text-transparent bg-clip-text">
                 {totCredits > 0 ? (uTotGrade / totCredits).toFixed(2) : "N/A"}
+                {uTotGrade}
               </span>{" "}
             </div>
           </div>
