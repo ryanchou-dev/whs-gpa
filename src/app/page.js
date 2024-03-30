@@ -40,7 +40,7 @@ export default function Home() {
 						<p className="mt-6 text-lg leading-8 text-gray-600">
 							A GPA calculator for Westmoor High School students!
 							<br />
-							Calculate your GPA, share your stats with friends/family, and
+							Calculate your GPA, share your stats with friends/family, get mentorship from fine-tuned models, and
 							more!
 						</p>
 						<div className="mt-10  flex items-center justify-center flex-col gap-x-6">
@@ -71,7 +71,7 @@ export default function Home() {
 					<div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
 						<div className="lg:pr-4">
 							<div className="lg:max-w-lg">
-								<p className="text-base font-semibold leading-7 text-indigo-600">Calculate accurately & efficiently </p>
+								<p className="text-base font-semibold leading-7 text-green-600">Calculate accurately & efficiently </p>
 								<h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Westmoor&apos;s distributable, precise GPA calculator</h1>
 								<p className="mt-6 text-xl leading-8 text-gray-700">
 									Tailored towards Westmoor High School students, this user-friendly app allows for the effortless input of grades and an accurate calculator
@@ -102,6 +102,12 @@ export default function Home() {
 										<span>
 											<strong className="font-semibold text-gray-900">Secure</strong><br />
 											Authentication has industry-standard encryption and your information is never shared with any third-parties.
+										</span>
+									</li>
+									<li className="flex gap-x-3">
+										<span>
+											<strong className="font-semibold text-gray-900">Intelligent</strong><br />
+											Our OpenAI powered AI model, Rammy, can help you around the site and give your guidance throughout your high school journey.
 										</span>
 									</li>
 
