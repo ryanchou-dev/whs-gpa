@@ -1,6 +1,8 @@
 export async function POST(req) {
+	// pull question from web request
 	const { prompt } = await req.json();
 
+	// create information sent to OpenAI -> seed with model #, prompt information, and other settings
 	const payload = {
 		model: "gpt-3.5-turbo",
 		messages: [
@@ -18,6 +20,7 @@ export async function POST(req) {
 		n: 1,
 	};
 
+	// call the API route with our API key
 	const response = await fetch("https://jamsapi.hackclub.dev/openai/chat/completions", {
 		headers: {
 			"Content-Type": "application/json",
@@ -28,6 +31,7 @@ export async function POST(req) {
 	});
 
 	const json = await response.json();
+	// return response to user
 	return new Response(JSON.stringify(json), {
 		headers: {
 			"Content-Type": "application/json",

@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+// for redirects & jwt reading
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+// sign in hook for user
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 
@@ -20,9 +21,11 @@ export default function SignIn() {
 
 	return (
 		<>
+			{/* Back button for user - style for all screen sizes */}
 			<div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-200">
 				<div class="mb-8 flex justify-center">
 					<div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+						{/* Next.JS Link component to speed up redirects */}
 						<Link
 							href="/"
 							passHref
@@ -33,16 +36,18 @@ export default function SignIn() {
 						</Link>
 					</div>
 				</div>
+
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<Link href={'/'} className="font-bold text-6xl  flex items-center justify-center bg-gradient-radial from-[#4ea877] to-[#224e36]  text-transparent bg-clip-text">
 						W
 					</Link>
-					<h2 className="mt-6 6 6 6 6 6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
 						Sign in to your account
 					</h2>
 				</div>
 
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+					{/* prevent form refresh */}
 					<form
 						className="space-y-6"
 						onSubmit={(e) => {
@@ -57,6 +62,7 @@ export default function SignIn() {
 							>
 								Email address
 							</label>
+							{/* input validation */}
 							<div className="mt-2">
 								<input
 									id="email"
