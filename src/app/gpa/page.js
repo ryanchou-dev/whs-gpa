@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+
 export default function Home() {
 	const [freshman, setFreshman] = useState([]);
 	const [sophmore, setSophmore] = useState([]);
 	const [junior, setJunior] = useState([]);
 	const [senior, setSenior] = useState([]);
+
+	const [question, setQuestion] = useState("");
+	const [answer, setAnswer] = useState("");
 
 	const [cName, setCName] = useState("");
 	const [grade, setGrade] = useState("A");
@@ -21,6 +25,27 @@ export default function Home() {
 	const [totCredits, setTotCredits] = useState(0);
 	const [uTotGrade, setUTotGrade] = useState(0);
 	const [totGrade, setTotGrade] = useState(0);
+	const generateAnswer = async (e) => {
+		e.preventDefault();
+		setAnswer("Thinking...");
+
+		const response = await fetch("/api/generate", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				prompt: question,
+			}),
+		});
+
+		if (!response.ok) {
+			throw new Error(response.statusText);
+		}
+
+		let answer = await response.json();
+		setAnswer(answer.choices[0].message.content);
+	};
 
 	const changeCopy = () => {
 		setCopy("Link copied!");
@@ -281,7 +306,6 @@ export default function Home() {
 									const data = await res.json();
 
 									if (year == "Freshman") {
-										console.log(data.id)
 										setFreshman((freshman) => [
 											...freshman,
 											{
@@ -855,6 +879,44 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
+						<div className="w-full sm:px-12">
+
+							<h3 className="font-semibold text-black text-3xl sm:text-4xl  text-left  mt-6 mb-2">
+								Mentorship from Rammy!
+							</h3>
+							<p className="mb-1 text-black">Rammy is Westmoor&apos;s mascot! Powered with ChatGPT 3.5, and fine-tuned to work the best for you! Rammy has information on
+								how to navigate the website and can mentor you throughout your high school journey!</p>
+							<textarea
+								value={question}
+								onChange={(e) => setQuestion(e.target.value)}
+								rows={4}
+								className="w-full p-6 text-black rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
+								placeholder={
+									"Could you give me advice on how to improve my grades in English class?"
+								}
+							/>
+							<button
+								className="bg-black rounded-xl text-white font-medium px-4 py-2 mt-4 hover:bg-black/80 w-full"
+								onClick={(e) => generateAnswer(e)}
+							>
+								Ask Rammy &rarr;
+							</button>
+
+							{answer &&
+								<div>
+									<h3 className="font-semibold text-black text-xl sm:text-2xl  text-left  mt-6 mb-2">
+										Rammy says:
+									</h3>
+
+									<div
+										className="text-black bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+									>
+										<p>{answer}</p>
+									</div>
+								</div>
+							}
+						</div>
+
 					</div>
 				</div>
 			</div>
