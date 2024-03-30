@@ -87,7 +87,7 @@ export default function Home() {
 							totGrade +
 							(3 + (course.courseType == "AP")) * Number(course.credits)
 					);
-					setUTotGrade((uTotGrade) => uTotGrade + 4 * Number(course.credits));
+					setUTotGrade((uTotGrade) => uTotGrade + 3 * Number(course.credits));
 				}
 				if (course.grade == "C") {
 					setTotGrade(
@@ -95,7 +95,7 @@ export default function Home() {
 							totGrade +
 							(2 + (course.courseType == "AP")) * Number(course.credits)
 					);
-					setUTotGrade((uTotGrade) => uTotGrade + 4 * Number(course.credits));
+					setUTotGrade((uTotGrade) => uTotGrade + 2 * Number(course.credits));
 				}
 				if (course.grade == "D") {
 					setTotGrade(
@@ -103,7 +103,7 @@ export default function Home() {
 							totGrade +
 							(1 + (course.courseType == "AP")) * Number(course.credits)
 					);
-					setUTotGrade((uTotGrade) => uTotGrade + 4 * Number(course.credits));
+					setUTotGrade((uTotGrade) => uTotGrade + 1 * Number(course.credits));
 				}
 
 				if (course.year == "Freshman") {
