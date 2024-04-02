@@ -826,8 +826,8 @@ export default function Home() {
 										Q: What if I have an A+ or A-?
 									</p>
 									<p className="mb-2">
-										A: For the purpose of this calculator, an A+ is treated as
-										an A (4.0) and an A- as an A (4.0).
+										A: At Westmoor High School, all letter grades are
+										weighted the same regardless of +s or -s.
 									</p>
 									<p className="mb-1 font-semibold">
 										Q: How can I get my GPA up?
