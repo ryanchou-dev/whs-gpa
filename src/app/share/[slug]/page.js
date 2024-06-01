@@ -131,15 +131,15 @@ export default function Home({ params }) {
 				</div>
 				<div className="mx-auto max-w-7xl py-16 sm:py-24 lg:py-32">
 					<div className="text-center">
-						<div class="hidden sm:mb-8 sm:flex sm:justify-center">
-							<div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+						<div className="hidden sm:mb-8 sm:flex sm:justify-center">
+							<div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
 								Calculate your GPA with ease!
 								<Link
 									href="/"
 									passHref
-									class="font-semibold ml-2 text-green-600"
+									className="font-semibold ml-2 text-green-600"
 								>
-									<span class="absolute inset-0" aria-hidden="true"></span>Get
+									<span className="absolute inset-0" aria-hidden="true"></span>Get
 									started! <span aria-hidden="true">&rarr;</span>
 								</Link>
 							</div>

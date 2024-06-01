@@ -3,10 +3,12 @@ import { authOptions } from "@/app/db/authOptions";
 import { db } from "@/app/db/db";
 
 export async function POST(req) {
+	// Reject all invalid requests
 	if (req.method === "POST") {
 		const { name, grade, credits, courseType, year } = await req.json();
 		const session = await getServerSession(authOptions);
 
+		// Invalid (Semantic Input Validation)
 		if (!name || !grade || !credits || !courseType || !year) {
 			return new Response(null, {
 				status: 400,
@@ -20,6 +22,8 @@ export async function POST(req) {
 				},
 			});
 
+
+			// Check for user existence
 			if (user) {
 				const result = await db.class.create({
 					data: {

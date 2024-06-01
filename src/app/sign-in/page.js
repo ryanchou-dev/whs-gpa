@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function SignIn() {
 	const [email, setEmail] = useState("");
+	const [success, setSuccess] = useState(false);
 	const { data: session, status } = useSession();
 	const router = useRouter();
 
@@ -22,37 +23,30 @@ export default function SignIn() {
 	return (
 		<>
 			{/* Back button for user - style for all screen sizes */}
-			<div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-200">
-				<div class="mb-8 flex justify-center">
-					<div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-						{/* Next.JS Link component to speed up redirects */}
-						<Link
-							href="/"
-							passHref
-							class="font-semibold text-green-600"
-						>
-							&larr; Back
+			<div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-200 min-h-screen">
 
-						</Link>
-					</div>
-				</div>
 
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-					<Link href={'/'} className="font-bold text-6xl  flex items-center justify-center bg-gradient-radial from-[#4ea877] to-[#224e36]  text-transparent bg-clip-text">
-						W
-					</Link>
-					<h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-						Sign in to your account
+					<div className="font-bold text-5xl  bg-clip-text text-transparent flex items-center justify-center bg-gradient-radial from-[#4ea877] to-[#224e36]  ">
+						🐏
+					</div>
+					<h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-800">
+						{success ? "Check your email" : "Register/Log In to Westmoor GPA"}
 					</h2>
+					<p className=" text-center text-sm font-medium leading-8 text-gray-600">
+
+						{success ? <div>We've sent a temporary login link. <br /> Please check your inbox at <b>{email}</b></div> : "A temporary login link will be sent to your email."}
+					</p>
 				</div>
 
-				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+				{!success && <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 					{/* prevent form refresh */}
 					<form
 						className="space-y-6"
-						onSubmit={(e) => {
+						onSubmit={async (e) => {
 							e.preventDefault();
-							signIn("email", { email });
+							const ret = await signIn("email", { redirect: false, email });
+							if (ret.ok) setSuccess(true);
 						}}
 					>
 						<div>
@@ -80,13 +74,19 @@ export default function SignIn() {
 						<div>
 							<button
 								type="submit"
-								className="flex w-full justify-center rounded-md bg-green-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+								className="flex w-full justify-center rounded-md bg-green-800/80 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							>
 								Continue
 							</button>
 						</div>
 					</form>
-				</div>
+				</div>}
+				{success && <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm flex items-center justify-center"><button
+					onClick={() => setSuccess(false)}
+					className="flex items-center justify-center rounded-md px-3 py-1.5 text-sm underline underline-offset-2 font-semibold leading-6 text-gray-600   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				>
+					Back to Login
+				</button></div>}
 			</div>
 		</>
 	);

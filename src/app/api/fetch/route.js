@@ -4,25 +4,25 @@ import { db } from "@/app/db/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
-  if (req.method === "GET") {
-    const session = await getServerSession(authOptions);
+	if (req.method === "GET") {
+		const session = await getServerSession(authOptions);
 
-    if (session) {
-      const user = await db.user.findUnique({
-        where: {
-          email: session.user?.email || "",
-        },
-      });
+		if (session) {
+			const user = await db.user.findUnique({
+				where: {
+					email: session.user?.email || "",
+				},
+			});
 
-      const classes = await db.class.findMany({
-        where: {
-          authorId: user.id,
-        },
-      });
+			const classes = await db.class.findMany({
+				where: {
+					authorId: user.id,
+				},
+			});
 
-      return NextResponse.json(classes);
-    } else {
-      return new Response(null, { status: 401, statusText: "unauthorized" });
-    }
-  }
+			return NextResponse.json(classes);
+		} else {
+			return new Response(null, { status: 401, statusText: "unauthorized" });
+		}
+	}
 }

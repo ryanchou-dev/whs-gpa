@@ -2,11 +2,12 @@
 import { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 
 export default function Home() {
 	const [freshman, setFreshman] = useState([]);
-	const [sophmore, setSophmore] = useState([]);
+	const [sophomore, setSophomore] = useState([]);
 	const [junior, setJunior] = useState([]);
 	const [senior, setSenior] = useState([]);
 
@@ -61,6 +62,10 @@ export default function Home() {
 	};
 
 	useEffect(() => {
+		if (status != "authenticated") {
+			router.push("/sign-in");
+			return
+		}
 		async function fetchData() {
 			const res = await fetch("/api/fetch", {
 				cache: "no-cache",
@@ -118,9 +123,9 @@ export default function Home() {
 						},
 					]);
 				}
-				if (course.year == "Sophmore") {
-					setSophmore((sophmore) => [
-						...sophmore,
+				if (course.year == "Sophomore") {
+					setSophomore((sophomore) => [
+						...sophomore,
 						{
 							courseName: course.name,
 							grade: course.grade,
@@ -158,13 +163,8 @@ export default function Home() {
 		}
 
 		fetchData();
-	}, []);
-
-	useEffect(() => {
-		if (status != "authenticated") {
-			router.push("/sign-in");
-		}
 	}, [status]);
+
 
 	const removeID = async (year, idx, cCredits, cGrade, cType) => {
 		setTotCredits((totCredits) => totCredits - Number(cCredits));
@@ -199,9 +199,9 @@ export default function Home() {
 				freshman.filter((course) => course.idx !== idx)
 			);
 		}
-		if (year == "sophmore") {
-			setSophmore((sophmore) =>
-				sophmore.filter((course) => course.idx !== idx)
+		if (year == "sophomore") {
+			setSophomore((sophomore) =>
+				sophomore.filter((course) => course.idx !== idx)
 			);
 		}
 		if (year == "junior") {
@@ -238,30 +238,34 @@ export default function Home() {
 						}}
 					/>
 				</div>
-				<div className="mx-auto max-w-7xl py-16 sm:py-24 lg:py-32">
+				<div className="mx-auto mt-8 max-w-7xl py-16 sm:py-24 lg:py-32">
 					<div className="text-center">
 						<h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
 							<span className="bg-gradient-radial from-[#4ea877] to-[#224e36] inline-block text-transparent bg-clip-text">
 								Westmoor
-							</span>{" "}
-							GPA Calculator
+							</span>{" "}GPA Calculator
 						</h1>
-						<p className="-mt-4 text-lg leading-8 text-gray-600">
-							Signed in as {session?.user?.email} |{" "}
-							<span>
-								<button
-									onClick={signOut}
-									className="mt-12 rounded-md underline text-sm text-gray-700 shadow-sm hover:bg-gray-300 p-1 duration-300 "
-								>
-									Sign Out
-								</button>
-							</span>
-							<br />
+						<p className="mt-4 text-lg leading-8 text-gray-600">
+							Signed in as {session?.user?.email}
 						</p>
 						<div className="mt-10  flex items-center justify-center flex-col gap-x-6">
 							<form
 								onSubmit={async (e) => {
 									e.preventDefault();
+									let exists = false;
+									if (year == "Freshman" && freshman.some(e => e.courseName == cName)) {
+										exists = true;
+									} else if (year == "Sophomore" && sophomore.some(e => e.courseName == cName)) {
+										exists = true;
+									} else if (year == "Junior" && junior.some(e => e.courseName == cName)) {
+										exists = true;
+									} else if (year == "Senior" && senior.some(e => e.courseName == cName)) {
+										exists = true;
+									}
+									if (exists) {
+										toast.error("You've added this course already.")
+										return;
+									}
 									setTotCredits((totCredits) => totCredits + Number(credits));
 
 									if (grade == "A") {
@@ -317,9 +321,9 @@ export default function Home() {
 											},
 										]);
 									}
-									if (year == "Sophmore") {
-										setSophmore((sophmore) => [
-											...sophmore,
+									if (year == "Sophomore") {
+										setSophomore((sophomore) => [
+											...sophomore,
 											{
 												courseName: cName,
 												grade: grade,
@@ -412,7 +416,7 @@ export default function Home() {
 										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-200 "
 									>
 										<option value="Freshman">Freshman</option>
-										<option value="Sophmore">Sophmore</option>
+										<option value="Sophomore">Sophomore</option>
 										<option value="Junior">Junior</option>
 										<option value="Senior">Senior</option>
 									</select>
@@ -511,7 +515,7 @@ export default function Home() {
 						</div>
 						<div className="relative overflow-x-auto">
 							<div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
-								Sophmore Year
+								Sophomore Year
 							</div>
 							<table className=" text-sm text-left rtl:text-right text-gray-500 ">
 								<thead className="text-xs uppercase bg-gray-50 text-gray-500">
@@ -534,7 +538,7 @@ export default function Home() {
 									</tr>
 								</thead>
 								<tbody>
-									{sophmore.map((course) => (
+									{sophomore.map((course) => (
 										<tr className="bg-green-500/10 border-b " key={course.idx}>
 											<th
 												scope="row"
@@ -553,7 +557,7 @@ export default function Home() {
 												className="px-6 py-4 text-center"
 												onClick={(e) =>
 													removeID(
-														"sophmore",
+														"sophomore",
 														course.idx,
 														course.credits,
 														course.grade,
@@ -769,6 +773,9 @@ export default function Home() {
 									</p>
 									<ol className="list-decimal pl-4 mb-4">
 										<li>
+											Enter a class you&apos;ve took, the year you took it, and if it was an AP class.
+										</li>
+										<li>
 											Enter your grades for each class using the standard letter
 											grading system (A, B, C, D, F).
 										</li>
@@ -777,13 +784,27 @@ export default function Home() {
 											semester, 10 for year).
 										</li>
 										<li>
-											Click the calculate button to see your GPA. The calculator
+											Click the add button to add the course to your record. The calculator
 											will convert your letter grades into numerical values,
 											multiply them by the number of credits (if provided), sum
 											them up, and divide by the total number of credits to get
 											your GPA.
 										</li>
+										<li>
+											Tada! Your unweighted and weighted GPA are shown beneath your course schedule.
+										</li>
 									</ol>
+									<h2 className="text-medium sm:text-lg font-semibold mb-2 cursor-pointer">
+										Additional Features
+									</h2>
+									<ul className="list-disc pl-4 mb-4">
+										<li>
+											You can also share your course schedule and GPA with family, teachers, and friends with the button next to your GPA.
+										</li>
+										<li>
+											Ask Rammy for any other questions about this site and advice on studying right below this section!
+										</li>
+									</ul>
 									<p className="mb-2">
 										Check out the{" "}
 										<a
@@ -849,34 +870,59 @@ export default function Home() {
 								<h3 className="font-semibold text-xl sm:text-2xl  text-center  mt-6 mb-2">
 									Important Links
 								</h3>
-								<div className=" text-center w-full">
+
+								<div
+									className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
+								>
 									<a
 										href="https://docs.google.com/forms/d/e/1FAIpQLSeUvj1Bj4x4Sg-QEdEpxMgfR7ER5zIKqI3qWipH8hLzbhVmdA/viewform"
 										target="_blank"
 										rel="noreferrer"
-										className="mt-12 w-full cursor-pointer  underline duration-300 rounded-lg hover:text-green-800   font-semibold text-green-600"
+										className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
 									>
-										Schedule an appointment with your counselor!
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
+											<path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+										</svg>
+
+										<p className="sm:text-sm text-xs text-center font-semibold mt-4">
+											Schedule an appointment with your counselor!
+										</p>
 									</a>
-									<br />
 									<a
 										href="https://docs.google.com/document/d/1tK36lBNMcLr42drhdaN6rvJ2ZedD-YmGwzefkOHX6TI/edit"
 										target="_blank"
 										rel="noreferrer"
-										className="mt-12 w-full cursor-pointer  underline duration-300 rounded-lg hover:text-green-800   font-semibold text-green-600"
+										className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
 									>
-										Course Catalog + Grad Requirements
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+											<path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+										</svg>
+
+
+										<p className="sm:text-sm text-xs text-center font-semibold mt-4">
+											Course Catalog + Graduation Requirements
+										</p>
 									</a>
-									<br />
 									<a
-										href="https://paper.co/"
+										href="https://paper.co"
 										target="_blank"
 										rel="noreferrer"
-										className="mt-12 w-full cursor-pointer  underline duration-300 rounded-lg hover:text-green-800   font-semibold text-green-600"
+										className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
 									>
-										Paper.co (Free Tutoring, sign in with your school email)
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+											<path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+										</svg>
+
+
+
+										<p className="sm:text-sm text-xs text-center font-semibold mt-4">
+											Paper.co <br /> Free Tutoring | Login with your email
+										</p>
 									</a>
+
+
 								</div>
+
 							</div>
 						</div>
 						<div className="w-full sm:px-12">
