@@ -35,7 +35,7 @@ export default function SignIn() {
 					</h2>
 					<p className=" text-center text-sm font-medium leading-8 text-gray-600">
 
-						{success ? <div>We've sent a temporary login link. <br /> Please check your inbox at <b>{email}</b></div> : "A temporary login link will be sent to your email."}
+						{success ? <div>We&apos;ve sent a temporary login link. <br /> Please check your inbox at <b>{email}</b></div> : "A temporary login link will be sent to your email."}
 					</p>
 				</div>
 
