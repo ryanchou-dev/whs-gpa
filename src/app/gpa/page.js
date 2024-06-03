@@ -839,7 +839,7 @@ export default function Home() {
 											<option value={2}>C</option>
 											<option value={1}>D</option>
 											<option value={0}>F</option>
-										</select>, my unweighted GPA will become <b>{aClass && aGrade ? ((uTotGrade - (aClass.credits * aClass.grade)) / totCredits).toFixed(2) : "N/A"}</b>
+										</select>, my unweighted GPA will become <b>{aClass && aGrade ? ((uTotGrade - (aClass.credits * aClass.grade) + (aGrade * aClass.credits)) / totCredits).toFixed(2) : "N/A"}</b>
 
 									</div>
 								</div>
