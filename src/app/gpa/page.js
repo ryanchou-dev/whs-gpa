@@ -815,19 +815,19 @@ export default function Home() {
 											<option value="" selected disabled hidden>Select a Class</option>
 
 											{freshman.map(cclass => {
-												return <option value={JSON.stringify(cclass)}>
+												return <option key={JSON.stringify(cclass)} value={JSON.stringify(cclass)}>
 													Freshman: {cclass.courseName} ({cclass.grade})</option>;
 											})}
 											{sophomore.map(cclass => {
-												return <option value={JSON.stringify(cclass)}>
+												return <option key={JSON.stringify(cclass)} value={JSON.stringify(cclass)}>
 													Sophomore: {cclass.courseName} ({cclass.grade})</option>;
 											})}
 											{junior.map(cclass => {
-												return <option value={JSON.stringify(cclass)}>
+												return <option key={JSON.stringify(cclass)} value={JSON.stringify(cclass)}>
 													Junior: {cclass.courseName} ({cclass.grade})</option>;
 											})}
 											{senior.map(cclass => {
-												return <option value={JSON.stringify(cclass)}>
+												return <option key={JSON.stringify(cclass)} value={JSON.stringify(cclass)}>
 													Senior: {cclass.courseName} ({cclass.grade})</option>;
 											})}
 										</select> changes to a
