@@ -14,6 +14,10 @@ export default function Home() {
 	const [question, setQuestion] = useState("");
 	const [answer, setAnswer] = useState("");
 
+	const [analysisTarget, setAnalysisTarget] = useState(4);
+
+	const [aClass, setAClass] = useState();
+	const [aGrade, setAGrade] = useState();
 	const [cName, setCName] = useState("");
 	const [grade, setGrade] = useState("A");
 	const [credits, setCredits] = useState("5");
@@ -432,7 +436,7 @@ export default function Home() {
 
 							<div className="h-1.5 w-full bg-gray-300 my-5"></div>
 
-							<div className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+							<div className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 								Courses:
 							</div>
 						</div>
@@ -759,213 +763,302 @@ export default function Home() {
 						>
 							{copy}
 						</a>
+					</div>
 
-						<div className="mt-16 max-w-4xl mx-auto p-4 bg-gray-100 text-gray-700 rounded-lg shadow-md">
-							<h2 className="text-xl sm:text-2xl font-semibold mb-2 cursor-pointer">
-								What&apos;s This?
-							</h2>
-							<div className="text-sm sm:text-md text-center">
-								<div className="text-left">
-									<p className="mb-2">
-										Our GPA calculator helps you estimate your Grade Point
-										Average based on your current grades. Here&apos;s how it
-										works:
-									</p>
-									<ol className="list-decimal pl-4 mb-4">
-										<li>
-											Enter a class you&apos;ve took, the year you took it, and if it was an AP class.
-										</li>
-										<li>
-											Enter your grades for each class using the standard letter
-											grading system (A, B, C, D, F).
-										</li>
-										<li>
-											Enter the number of credits for each class (5 for
-											semester, 10 for year).
-										</li>
-										<li>
-											Click the add button to add the course to your record. The calculator
-											will convert your letter grades into numerical values,
-											multiply them by the number of credits (if provided), sum
-											them up, and divide by the total number of credits to get
-											your GPA.
-										</li>
-										<li>
-											Tada! Your unweighted and weighted GPA are shown beneath your course schedule.
-										</li>
-									</ol>
-									<h2 className="text-medium sm:text-lg font-semibold mb-2 cursor-pointer">
-										Additional Features
-									</h2>
-									<ul className="list-disc pl-4 mb-4">
-										<li>
-											You can also share your course schedule and GPA with family, teachers, and friends with the button next to your GPA.
-										</li>
-										<li>
-											Ask Rammy for any other questions about this site and advice on studying right below this section!
-										</li>
-									</ul>
-									<p className="mb-2">
-										Check out the{" "}
-										<a
-											href="https://docs.google.com/document/d/1tK36lBNMcLr42drhdaN6rvJ2ZedD-YmGwzefkOHX6TI/edit"
-											target="_blank"
-											rel="noreferrer"
-											className="text-inline text-green-600 font-semibold underline"
-										>
-											Course Catalog
-										</a>{" "}
-										for more information on the classes you can take at Westmoor
-										High School. This also includes details on
-										graduation/college requirements!
-									</p>
+
+					<div className="flex flex-col mt-12 md:px-10 md:flex-row items-center justify-center gap-6">
+						<div className="max-w-4xl">
+							<div className="px-8 pt-10 pb-14 bg-gray-100 rounded-b-lg">
+								<div className="text-black space-y-4">
+									<div>
+
+										<h3 className="text-xl font-bold lead-xl bold">Analysis: Grade Increase</h3>
+										<div className="text-sm font-light -mt-0.5">Type your target GPA to see how many letter grades you need to increase to get it.</div>
+									</div>
+									<div className="text-lg font-light leading-8">To increase my unweighted GPA to
+										<input
+											type="text"
+											onChange={(e) => setAnalysisTarget(e.target.value)}
+											value={analysisTarget}
+											required
+											className="w-24  mx-1 inline-block rounded-md  px-3.5 py-1 text-sm text-black shadow-sm bg-gray-100 hover:bg-gray-50 "
+										/>,
+
+										I need to {((analysisTarget * totCredits) - uTotGrade).toFixed(0) > 0 ? "increase" : "decrease"} my total credits by {Math.abs(((analysisTarget * totCredits) - uTotGrade).toFixed(0))}.
+
+
+										This is about {(Math.abs(((analysisTarget * totCredits) - uTotGrade).toFixed(0))) / 5} grade letters in a semester.
+									</div>
 								</div>
-								<h3 className="font-semibold text-xl sm:text-2xl  text-left  mt-6 mb-2">
-									Q&A
-								</h3>
-								<div className="text-left">
-									<p className="mb-1 font-semibold">Q: What&apos;s a GPA?</p>
-									<p className="mb-2">
-										A: It&apos;s a number that represents a student&apos;s
-										progress in school. Colleges and employers often use it to
-										evaluate your academic performance.
-									</p>
-									<p className="mb-1 font-semibold">
-										Q: Does the share link automatically update?
-									</p>
-									<p className="mb-2">
-										A: Yes! Whenever you make a change on your personal GPA,
-										everything will be instantly updated on the share link.
-									</p>
-									<p className="mb-1 font-semibold">
-										Q: I&apos;m not done with high school yet.
-									</p>
-									<p className="mb-2">
-										A: No worries, just add what you have so far.{" "}
-									</p>
-									<p className="mb-1 font-semibold">
-										Q: What if I have an A+ or A-?
-									</p>
-									<p className="mb-2">
-										A: At Westmoor High School, all letter grades are
-										weighted the same regardless of +s or -s.
-									</p>
-									<p className="mb-1 font-semibold">
-										Q: How can I get my GPA up?
-									</p>
-									<p className="mb-2">
-										A: Try to do well in your classes! If you&apos;re
-										struggling, talk to your teacher or{" "}
-										<a
-											href="https://docs.google.com/forms/d/e/1FAIpQLSeUvj1Bj4x4Sg-QEdEpxMgfR7ER5zIKqI3qWipH8hLzbhVmdA/viewform"
-											target="_blank"
-											rel="noreferrer"
-											className="mt-12 cursor-pointer inline underline duration-300 rounded-lg hover:text-black   text-gray-700"
-										>
-											counselor
-										</a>{" "}
-										for help.
-									</p>
+							</div>
+						</div>
+						<div className="max-w-4xl">
+							<div className="px-8 pt-10 pb-14 bg-gray-100 rounded-b-lg">
+								<div className="text-black space-y-4">
+									<div>
+
+										<h3 className="text-xl font-bold lead-xl bold">Analysis: Class Goals</h3>
+										<div className="text-sm font-light -mt-0.5">Predict changes in your class to see how your GPA will be affected.</div>
+									</div>
+									<div className="text-lg font-light leading-8">If my grade in
+										<select onChange={(e) => {
+											let x = JSON.parse(e.target.value)
+											if (x.grade == "A") x.grade = 4
+											else if (x.grade == "B") x.grade = 3
+											else if (x.grade == "C") x.grade = 2
+											else if (x.grade == "D") x.grade = 1
+											else if (x.grade == "F") x.grade = 0
+											setAClass(x)
+										}
+
+										} className="mx-1 inline-block rounded-md  px-3.5 py-1 text-sm text-black shadow-sm bg-gray-100 hover:bg-gray-50">
+											<option value="" selected disabled hidden>Select a Class</option>
+
+											{freshman.map(cclass => {
+												return <option value={JSON.stringify(cclass)}>
+													Freshman: {cclass.courseName} ({cclass.grade})</option>;
+											})}
+											{sophomore.map(cclass => {
+												return <option value={JSON.stringify(cclass)}>
+													Sophomore: {cclass.courseName} ({cclass.grade})</option>;
+											})}
+											{junior.map(cclass => {
+												return <option value={JSON.stringify(cclass)}>
+													Junior: {cclass.courseName} ({cclass.grade})</option>;
+											})}
+											{senior.map(cclass => {
+												return <option value={JSON.stringify(cclass)}>
+													Senior: {cclass.courseName} ({cclass.grade})</option>;
+											})}
+										</select> changes to a
+										<select onChange={(e) => setAGrade(e.target.value)} className="w-16 mx-1 inline-block rounded-md  px-3.5 py-1 text-sm text-black shadow-sm bg-gray-100 hover:bg-gray-50">
+											<option value="" selected disabled hidden>Select your predicted grade</option>
+
+											<option value={4}>A</option>
+											<option value={3}>B</option>
+											<option value={2}>C</option>
+											<option value={1}>D</option>
+											<option value={0}>F</option>
+										</select>, my unweighted GPA will become <b>{aClass && aGrade ? ((uTotGrade - (aClass.credits * aClass.grade)) / totCredits).toFixed(2) : "N/A"}</b>
+
+									</div>
 								</div>
-								<h3 className="font-semibold text-xl sm:text-2xl  text-center  mt-6 mb-2">
-									Important Links
-								</h3>
+							</div>
+						</div>
+					</div>
 
-								<div
-									className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
-								>
-									<a
-										href="https://docs.google.com/forms/d/e/1FAIpQLSeUvj1Bj4x4Sg-QEdEpxMgfR7ER5zIKqI3qWipH8hLzbhVmdA/viewform"
-										target="_blank"
-										rel="noreferrer"
-										className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
-									>
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
-											<path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-										</svg>
 
-										<p className="sm:text-sm text-xs text-center font-semibold mt-4">
-											Schedule an appointment with your counselor!
-										</p>
-									</a>
+					<div className="relative flex py-5 items-center mt-16">
+						<div className="flex-grow border-t border-gray-400"></div>
+						<span className="flex-shrink mx-4 text-gray-400">Help</span>
+						<div className="flex-grow border-t border-gray-400"></div>
+					</div>
+
+					<div className="mt-16 max-w-4xl mx-auto p-4 bg-gray-100 text-gray-700 rounded-lg shadow-md">
+						<h2 className="text-xl sm:text-2xl font-semibold mb-2 cursor-pointer">
+							What&apos;s This?
+						</h2>
+						<div className="text-sm sm:text-md text-center">
+							<div className="text-left">
+								<p className="mb-2">
+									Our GPA calculator helps you estimate your Grade Point
+									Average based on your current grades. Here&apos;s how it
+									works:
+								</p>
+								<ol className="list-decimal pl-4 mb-4">
+									<li>
+										Enter a class you&apos;ve took, the year you took it, and if it was an AP class.
+									</li>
+									<li>
+										Enter your grades for each class using the standard letter
+										grading system (A, B, C, D, F).
+									</li>
+									<li>
+										Enter the number of credits for each class (5 for
+										semester, 10 for year).
+									</li>
+									<li>
+										Click the add button to add the course to your record. The calculator
+										will convert your letter grades into numerical values,
+										multiply them by the number of credits (if provided), sum
+										them up, and divide by the total number of credits to get
+										your GPA.
+									</li>
+									<li>
+										Tada! Your unweighted and weighted GPA are shown beneath your course schedule.
+									</li>
+								</ol>
+								<h2 className="text-medium sm:text-lg font-semibold mb-2 cursor-pointer">
+									Additional Features
+								</h2>
+								<ul className="list-disc pl-4 mb-4">
+									<li>
+										You can also share your course schedule and GPA with family, teachers, and friends with the button next to your GPA.
+									</li>
+									<li>
+										Ask Rammy for any other questions about this site and advice on studying right below this section!
+									</li>
+								</ul>
+								<p className="mb-2">
+									Check out the{" "}
 									<a
 										href="https://docs.google.com/document/d/1tK36lBNMcLr42drhdaN6rvJ2ZedD-YmGwzefkOHX6TI/edit"
 										target="_blank"
 										rel="noreferrer"
-										className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+										className="text-inline text-green-600 font-semibold underline"
 									>
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-											<path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-										</svg>
-
-
-										<p className="sm:text-sm text-xs text-center font-semibold mt-4">
-											Course Catalog + Graduation Requirements
-										</p>
-									</a>
+										Course Catalog
+									</a>{" "}
+									for more information on the classes you can take at Westmoor
+									High School. This also includes details on
+									graduation/college requirements!
+								</p>
+							</div>
+							<h3 className="font-semibold text-xl sm:text-2xl  text-left  mt-6 mb-2">
+								Q&A
+							</h3>
+							<div className="text-left">
+								<p className="mb-1 font-semibold">Q: What&apos;s a GPA?</p>
+								<p className="mb-2">
+									A: It&apos;s a number that represents a student&apos;s
+									progress in school. Colleges and employers often use it to
+									evaluate your academic performance.
+								</p>
+								<p className="mb-1 font-semibold">
+									Q: Does the share link automatically update?
+								</p>
+								<p className="mb-2">
+									A: Yes! Whenever you make a change on your personal GPA,
+									everything will be instantly updated on the share link.
+								</p>
+								<p className="mb-1 font-semibold">
+									Q: I&apos;m not done with high school yet.
+								</p>
+								<p className="mb-2">
+									A: No worries, just add what you have so far.{" "}
+								</p>
+								<p className="mb-1 font-semibold">
+									Q: What if I have an A+ or A-?
+								</p>
+								<p className="mb-2">
+									A: At Westmoor High School, all letter grades are
+									weighted the same regardless of +s or -s.
+								</p>
+								<p className="mb-1 font-semibold">
+									Q: How can I get my GPA up?
+								</p>
+								<p className="mb-2">
+									A: Try to do well in your classes! If you&apos;re
+									struggling, talk to your teacher or{" "}
 									<a
-										href="https://paper.co"
+										href="https://docs.google.com/forms/d/e/1FAIpQLSeUvj1Bj4x4Sg-QEdEpxMgfR7ER5zIKqI3qWipH8hLzbhVmdA/viewform"
 										target="_blank"
 										rel="noreferrer"
-										className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+										className="mt-12 cursor-pointer inline underline duration-300 rounded-lg hover:text-black   text-gray-700"
 									>
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-											<path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-										</svg>
+										counselor
+									</a>{" "}
+									for help.
+								</p>
+							</div>
+							<h3 className="font-semibold text-xl sm:text-2xl  text-center  mt-6 mb-2">
+								Important Links
+							</h3>
+
+							<div
+								className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
+							>
+								<a
+									href="https://docs.google.com/forms/d/e/1FAIpQLSeUvj1Bj4x4Sg-QEdEpxMgfR7ER5zIKqI3qWipH8hLzbhVmdA/viewform"
+									target="_blank"
+									rel="noreferrer"
+									className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+									</svg>
+
+									<p className="sm:text-sm text-xs text-center font-semibold mt-4">
+										Schedule an appointment with your counselor!
+									</p>
+								</a>
+								<a
+									href="https://docs.google.com/document/d/1tK36lBNMcLr42drhdaN6rvJ2ZedD-YmGwzefkOHX6TI/edit"
+									target="_blank"
+									rel="noreferrer"
+									className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+									</svg>
+
+
+									<p className="sm:text-sm text-xs text-center font-semibold mt-4">
+										Course Catalog + Graduation Requirements
+									</p>
+								</a>
+								<a
+									href="https://paper.co"
+									target="_blank"
+									rel="noreferrer"
+									className="h-full w-1/3 hover:border hover:border-green-600/60 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+									</svg>
 
 
 
-										<p className="sm:text-sm text-xs text-center font-semibold mt-4">
-											Paper.co <br /> Free Tutoring | Login with your email
-										</p>
-									</a>
+									<p className="sm:text-sm text-xs text-center font-semibold mt-4">
+										Paper.co <br /> Free Tutoring | Login with your email
+									</p>
+								</a>
 
-
-								</div>
 
 							</div>
+
 						</div>
-						<div className="w-full sm:px-12">
-
-							<h3 className="font-semibold text-black text-3xl sm:text-4xl  text-left  mt-6 mb-2">
-								Mentorship from Rammy!
-							</h3>
-							<p className="mb-1 text-black">Rammy is Westmoor&apos;s mascot! Powered with ChatGPT 3.5, and fine-tuned to work the best for you! Rammy has information on
-								how to navigate the website and can mentor you throughout your high school journey!</p>
-							<textarea
-								value={question}
-								onChange={(e) => setQuestion(e.target.value)}
-								rows={4}
-								className="w-full p-6 text-black rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
-								placeholder={
-									"Could you give me advice on how to improve my grades in English class?"
-								}
-							/>
-							<button
-								className="bg-black rounded-xl text-white font-medium px-4 py-2 mt-4 hover:bg-black/80 w-full"
-								onClick={(e) => generateAnswer(e)}
-							>
-								Ask Rammy &rarr;
-							</button>
-
-							{answer &&
-								<div>
-									<h3 className="font-semibold text-black text-xl sm:text-2xl  text-left  mt-6 mb-2">
-										Rammy says:
-									</h3>
-
-									<div
-										className="text-black bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
-									>
-										<p>{answer}</p>
-									</div>
-								</div>
-							}
-						</div>
-
 					</div>
-				</div>
-			</div>
-		</main>
+					<div className="w-full mt-24 sm:px-12">
+
+						<h3 className="font-semibold text-black text-3xl sm:text-4xl  text-left  mt-6 mb-2">
+							Mentorship from Rammy!
+						</h3>
+						<p className="mb-1 text-black">Rammy is Westmoor&apos;s mascot! Powered with ChatGPT 3.5, and fine-tuned to work the best for you! Rammy has information on
+							how to navigate the website and can mentor you throughout your high school journey!</p>
+						<textarea
+							value={question}
+							onChange={(e) => setQuestion(e.target.value)}
+							rows={4}
+							className="w-full p-6 text-black rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
+							placeholder={
+								"Could you give me advice on how to improve my grades in English class?"
+							}
+						/>
+						<button
+							className="bg-black rounded-xl text-white font-medium px-4 py-2 mt-4 hover:bg-black/80 w-full"
+							onClick={(e) => generateAnswer(e)}
+						>
+							Ask Rammy &rarr;
+						</button>
+
+						{answer &&
+							<div>
+								<h3 className="font-semibold text-black text-xl sm:text-2xl  text-left  mt-6 mb-2">
+									Rammy says:
+								</h3>
+
+								<div
+									className="text-black bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+								>
+									<p>{answer}</p>
+								</div>
+							</div>
+						}
+					</div>
+
+				</div >
+			</div >
+		</main >
 	);
 }

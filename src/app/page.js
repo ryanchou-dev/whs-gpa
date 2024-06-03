@@ -13,30 +13,6 @@ export default function Home() {
 	const [client, setClient] = useState(null);
 	const { data: session, status } = useSession();
 	const router = useRouter();
-	const variants = {
-		initial: {
-			x: 0,
-		},
-		animate: {
-			x: 10,
-			rotate: 5,
-			transition: {
-				duration: 0.2,
-			},
-		},
-	};
-	const variantsSecond = {
-		initial: {
-			x: 0,
-		},
-		animate: {
-			x: -10,
-			rotate: -5,
-			transition: {
-				duration: 0.2,
-			},
-		},
-	};
 
 	// useEffect(() => {
 	// 	if (status == "authenticated") {
