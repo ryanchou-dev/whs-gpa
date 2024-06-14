@@ -92,7 +92,7 @@ export default function Home() {
 						<div className="mx-auto max-w-2xl mb-12 ">
 							<div className="text-center">
 								<h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
-									Want to <span className="text-[#2a86d4]">boost</span> your productivity?
+									Want to <span className="text-[#2a86d4]">unlock</span> your academic potential?
 								</h1>
 								<p className="mt-6 text-lg leading-8 text-gray-600">
 									Westmoor GPA is a free and accessible tool to all students at Westmoor. <br />Start using <span className="font-semibold bg-gradient-radial from-[#4ea877] to-[#224e36] inline-block text-transparent bg-clip-text">
