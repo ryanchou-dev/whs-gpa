@@ -1,3 +1,4 @@
+// Database configuration
 datasource db {
     provider = "cockroachdb"
     url      = env("DATABASE_URL")
@@ -7,6 +8,7 @@ generator client {
     provider = "prisma-client-js"
 }
 
+// Account model, generate unique IDs for every user and set up session expiries
 model Account {
     id                String  @id @default(cuid())
     userId            String
@@ -53,6 +55,7 @@ model VerificationToken {
     @@unique([identifier, token])
 }
 
+// Match each class to user through Prisma relations
 model Class {
     id         String @id @default(cuid())
     name       String

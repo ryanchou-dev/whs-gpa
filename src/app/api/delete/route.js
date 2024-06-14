@@ -7,13 +7,16 @@ export async function POST(req) {
 		const { id } = await req.json();
 		const session = await getServerSession(authOptions);
 
+		// ID was not provided from user, invalid request
 		if (!id) {
 			return new Response(null, {
 				status: 400,
 				statusText: "bad-request",
 			});
 		}
+		// Verify that user is logged in
 		if (session) {
+			// Pull the user which made the request
 			const user = await db.user.findFirst({
 				where: {
 					email: session.user.email,
@@ -26,6 +29,7 @@ export async function POST(req) {
 					},
 				});
 
+				// Class is not found with given ID
 				if (!result) {
 					return new Response(null, {
 						status: 500,

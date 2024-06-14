@@ -30,6 +30,9 @@ export default function Home() {
 	const [totCredits, setTotCredits] = useState(0);
 	const [uTotGrade, setUTotGrade] = useState(0);
 	const [totGrade, setTotGrade] = useState(0);
+
+
+	// Button -> Queries API to generate an answer to Rammy
 	const generateAnswer = async (e) => {
 		e.preventDefault();
 		setAnswer("Thinking...");
@@ -52,6 +55,7 @@ export default function Home() {
 		setAnswer(answer.choices[0].message.content);
 	};
 
+	// State change and timeout for copying the GPA link to dashboard
 	const changeCopy = () => {
 		setCopy("Link copied!");
 
@@ -70,6 +74,7 @@ export default function Home() {
 			router.push("/sign-in");
 			return
 		}
+		// Fetch data from database on first page load
 		async function fetchData() {
 			const res = await fetch("/api/fetch", {
 				cache: "no-cache",
@@ -170,6 +175,7 @@ export default function Home() {
 	}, [status]);
 
 
+	// Queries API when remove button is pressed
 	const removeID = async (year, idx, cCredits, cGrade, cType) => {
 		setTotCredits((totCredits) => totCredits - Number(cCredits));
 
@@ -382,7 +388,7 @@ export default function Home() {
 
 									<select
 										onChange={(e) => setGrade(e.target.value)}
-										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-200 "
+										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-300 "
 									>
 										<option value="A">A</option>
 										<option value="B">B</option>
@@ -395,19 +401,19 @@ export default function Home() {
 									<label className="text-left text-black block">Credits</label>
 									<select
 										onChange={(e) => setCredits(e.target.value)}
-										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-200 "
+										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-300 "
 									>
 										<option value="5">5</option>
 										<option value="10">10</option>
 									</select>
 								</div>
 								<div className="flex-col flex ">
-									<label className="text-left text-black block">
+									<label className="text-left text-black block ">
 										Course Type
 									</label>
 									<select
 										onChange={(e) => setType(e.target.value)}
-										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-200 "
+										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-300 "
 									>
 										<option value="Regular">Regular</option>
 										<option value="AP">AP</option>
@@ -417,7 +423,7 @@ export default function Home() {
 									<label className="text-left text-black block">Year</label>
 									<select
 										onChange={(e) => setYear(e.target.value)}
-										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-200 "
+										className="rounded-md bg-gray-300 px-3.5 py-2.5 text-sm text-black shadow-sm hover:bg-gray-300 "
 									>
 										<option value="Freshman">Freshman</option>
 										<option value="Sophomore">Sophomore</option>
@@ -428,7 +434,7 @@ export default function Home() {
 
 								<button
 									type="submit"
-									className="mt-5 rounded-md bg-green-700 px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-green-600 "
+									className="mt-5 rounded-md bg-green-800/70 hover:scale-105 duration-100 px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-green-800/80 "
 								>
 									Add
 								</button>
@@ -437,7 +443,7 @@ export default function Home() {
 							<div className="h-1.5 w-full bg-gray-300 my-5"></div>
 
 							<div className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-								Courses:
+								Courses
 							</div>
 						</div>
 					</div>
@@ -832,7 +838,7 @@ export default function Home() {
 											})}
 										</select> changes to a
 										<select onChange={(e) => setAGrade(e.target.value)} className="w-16 mx-1 inline-block rounded-md  px-3.5 py-1 text-sm text-black shadow-sm bg-gray-100 hover:bg-gray-50">
-											<option value="" selected disabled hidden>Select your predicted grade</option>
+											<option value="" selected disabled hidden>?</option>
 
 											<option value={4}>A</option>
 											<option value={3}>B</option>
@@ -1036,7 +1042,7 @@ export default function Home() {
 							}
 						/>
 						<button
-							className="bg-black rounded-xl text-white font-medium px-4 py-2 mt-4 hover:bg-black/80 w-full"
+							className="bg-green-800/60 rounded-xl text-white font-medium px-4 py-2 mt-4 hover:scale-105 duration-200 w-full"
 							onClick={(e) => generateAnswer(e)}
 						>
 							Ask Rammy &rarr;

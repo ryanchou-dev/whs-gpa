@@ -1,4 +1,5 @@
 "use client";
+// Interaction on mobile screens
 import {
 	Disclosure,
 	DisclosureButton,
@@ -6,11 +7,8 @@ import {
 } from '@headlessui/react'
 import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
+// Pulls the current URL from client.
 import { usePathname } from 'next/navigation';
-
-
-
-
 
 export function MainNav() {
 	const { data: session, status } = useSession();
@@ -19,6 +17,7 @@ export function MainNav() {
 		{ name: 'Home', href: '/', current: currentPage == "/" },
 		{ name: 'Courses', href: '/gpa', current: currentPage == "/gpa" },
 	]
+
 
 	return (
 
@@ -56,6 +55,7 @@ export function MainNav() {
 									<div className="hidden sm:ml-6 sm:block">
 										<div className="flex space-x-4">
 											{navigation.map((item) => {
+												// Show Courses page only if user is signed in.
 												if (item.name == "Home" || status == "authenticated") {
 													return (
 														<Link
@@ -97,10 +97,6 @@ export function MainNav() {
 												>
 													<div>
 														Register/Login
-
-														{/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-															<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
-														</svg> */}
 													</div>
 
 												</Link>
@@ -114,7 +110,7 @@ export function MainNav() {
 						<DisclosurePanel className="sm:hidden">
 							<div className="space-y-1 px-2 pb-3 pt-2">
 								{navigation.map((item) => {
-
+									// Show Courses page only if user is signed in.
 									if (item.name == "Home" || status == "authenticated") {
 										return (
 											<DisclosureButton

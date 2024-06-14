@@ -22,7 +22,7 @@ export default function SignIn() {
 
 	return (
 		<>
-			{/* Back button for user - style for all screen sizes */}
+			{/* Dynamic form screen */}
 			<div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-200 min-h-screen">
 
 
@@ -81,12 +81,17 @@ export default function SignIn() {
 						</div>
 					</form>
 				</div>}
-				{success && <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm flex items-center justify-center"><button
-					onClick={() => setSuccess(false)}
-					className="flex items-center justify-center rounded-md px-3 py-1.5 text-sm underline underline-offset-2 font-semibold leading-6 text-gray-600   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-				>
-					Back to Login
-				</button></div>}
+
+				{/* Conditional component - email sent */}
+				{success &&
+					<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm flex items-center justify-center"><button
+						onClick={() => setSuccess(false)}
+						className="flex items-center justify-center rounded-md px-3 py-1.5 text-sm underline underline-offset-2 font-semibold leading-6 text-gray-600   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					>
+						Back to Login
+					</button></div>
+
+				}
 			</div>
 		</>
 	);
