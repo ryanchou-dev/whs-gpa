@@ -86,8 +86,59 @@ export default function Home() {
 					</div>
 				</div>
 				<BentoShowcase />
-				<div className="rounded-lg text-center flex items-center mt-24 justify-center">
 
+
+				<div className="rounded-lg text-center flex items-center mt-24 justify-center">
+					<div className="mx-auto w-full lg:mx-0 lg:flex-auto py-4 text-center">
+						<div className="mx-auto max-w-3xl mb-12 ">
+							<div className="text-center">
+								<h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+									<span className="text-[#2a86d4]">How</span> do I use this?
+								</h1>
+								<div className="mt-8 text-lg text-gray-900 text-center">
+									<div className="text-left">
+										<p className="mb-2">
+											Our GPA calculator helps you estimate your Grade Point
+											Average based on your current grades. Here&apos;s how it
+											works:
+										</p>
+										<ol className="space-y-4 list-decimal pl-4 mb-4">
+											<li>
+												Enter a class you&apos;ve took, the year you took it, and if it was an AP class.
+											</li>
+											<li>
+												Enter your grades for each class using the standard letter
+												grading system (A, B, C, D, F).
+											</li>
+											<li>
+												Enter the number of credits for each class (5 for
+												semester, 10 for year).
+											</li>
+											<li>
+												Click the add button to add the course to your record. The calculator
+												will convert your letter grades into numerical values,
+												multiply them by the number of credits (if provided), sum
+												them up, and divide by the total number of credits to get
+												your GPA.
+											</li>
+											<li>
+												Tada! Your unweighted and weighted GPA are shown beneath your course schedule.
+											</li>
+										</ol>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+				<div className="rounded-lg text-center flex items-center mt-8 justify-center">
 					<div className="mx-auto w-full lg:mx-0 lg:flex-auto lg:py-32 text-center">
 						<div className="mx-auto max-w-2xl mb-12 ">
 							<div className="text-center">
