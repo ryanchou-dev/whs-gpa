@@ -862,7 +862,7 @@ export default function Home() {
 
 					<div className="mt-16 max-w-4xl mx-auto p-4 bg-gray-100 text-gray-700 rounded-lg shadow-md">
 						<h2 className="text-xl sm:text-2xl font-semibold mb-2 cursor-pointer">
-							What&apos;s This?
+							Instructions
 						</h2>
 						<div className="text-sm sm:text-md text-center">
 							<div className="text-left">
