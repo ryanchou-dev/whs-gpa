@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home({ params }) {
 	const [freshman, setFreshman] = useState([]);
-	const [sophmore, setSophmore] = useState([]);
+	const [sophomore, setSophomore] = useState([]);
 	const [junior, setJunior] = useState([]);
 	const [senior, setSenior] = useState([]);
 	const [email, setEmail] = useState("");
@@ -72,9 +72,9 @@ export default function Home({ params }) {
 						},
 					]);
 				}
-				if (course.year == "Sophmore") {
-					setSophmore((sophmore) => [
-						...sophmore,
+				if (course.year == "Sophomore") {
+					setSophomore((sophomore) => [
+						...sophomore,
 						{
 							courseName: course.name,
 							grade: course.grade,
@@ -211,7 +211,7 @@ export default function Home({ params }) {
 							</div>
 							<div className="relative overflow-x-auto">
 								<div className="text-gray-700 sm:text-2xl font-bold text-xl mb-4">
-									Sophmore Year
+									Sophomore Year
 								</div>
 								<table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
 									<thead className="text-xs uppercase bg-gray-50 text-gray-500">
@@ -231,7 +231,7 @@ export default function Home({ params }) {
 										</tr>
 									</thead>
 									<tbody>
-										{sophmore.map((course) => (
+										{sophomore.map((course) => (
 											<tr
 												className="bg-green-500/10 border-b "
 												key={course.idx}
