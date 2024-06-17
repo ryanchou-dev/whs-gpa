@@ -894,6 +894,17 @@ export default function Home() {
 										Tada! Your unweighted and weighted GPA are shown beneath your course schedule.
 									</li>
 								</ol>
+								<p className="mb-6 font-medium p-6 bg-green-800/20 rounded-2xl">
+									<div className=" text-black font-bold">Correlation</div>
+									<div className="text-gray-900">
+
+										This method of calculating GPA correlates to the official topic - calculating a user&apos;s weighted and unweighted GPA.
+										<br />
+										<br />
+										Coupled with additional features, this website addresses this prompt fully.
+									</div>
+
+								</p>
 								<h2 className="text-medium sm:text-lg font-semibold mb-2 cursor-pointer">
 									Additional Features
 								</h2>
