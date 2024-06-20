@@ -126,7 +126,7 @@ export default function Home() {
 											</li>
 										</ol>
 									</div>
-									<p className="font-medium p-6 bg-green-800/20 rounded-2xl">
+									<div className="font-medium p-6 bg-green-800/20 rounded-2xl">
 										<div className=" text-black font-bold">Correlation</div>
 										<div className="text-gray-900">
 
@@ -135,8 +135,7 @@ export default function Home() {
 											<br />
 											Coupled with additional features, this website addresses this prompt effectively.
 										</div>
-
-									</p>
+									</div>
 								</div>
 
 
