@@ -895,13 +895,14 @@ export default function Home() {
 									</li>
 								</ol>
 								<p className="mb-6 font-medium p-6 bg-green-800/20 rounded-2xl">
-									<div className=" text-black font-bold">Correlation</div>
+
+									<div className=" text-black text-2xl font-bold">Correlation</div>
 									<div className="text-gray-900">
 
 										This method of calculating GPA correlates to the official topic - calculating a user&apos;s weighted and unweighted GPA.
 										<br />
 										<br />
-										Coupled with additional features, this website addresses this prompt fully.
+										Coupled with additional features, this website fully addresses this year&apos;s prompt.
 									</div>
 
 								</p>
