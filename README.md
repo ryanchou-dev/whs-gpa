@@ -1,3 +1,16 @@
+Westmoor GPA is a functional GPA calculator for Westmoor High School students.
+
+Westmoor GPA helps you estimate your Grade Point Average based on your current grades. Here's how it works:
+
+1. Enter a class you've took, the year you took it, and if it was an AP class.
+2. Enter your grades for each class using the standard letter grading system (A, B, C, D, F).
+3. Enter the number of credits for each class (5 for semester, 10 for year).
+4. Click the add button to add the course to your record. The calculator will convert your letter grades into numerical values, multiply them by the number of credits (if provided), sum them up, and divide by the total number of credits to get your GPA.
+5. Tada! Your unweighted and weighted GPA are shown beneath your course schedule.
+
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
